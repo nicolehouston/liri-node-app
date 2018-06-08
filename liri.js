@@ -40,12 +40,12 @@ else if (command === "spotify-this-song") {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-  
+
     var result = data.tracks.items[0].album;
 
     var showData = [
       "Artist: " + result.artists[0].name,
-      "Song Name: " + term,
+      "Song Name: " + data.tracks.items[0].name,
       "Preview Song: " + result.external_urls.spotify,
       "Album: " + result.name,
     ].join("\n\n");
