@@ -11,6 +11,8 @@ var client = new Twitter(keys.twitter);
 var command = process.argv[2];
 var term = process.argv.slice(3).join(" ");
 
+var divider = "===========================================================";
+
 function liri() {
 // This runs if liri is given the command "my-tweets"
 if (command === "my-tweets") {
@@ -20,7 +22,11 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
     for (var i = 0; i < tweets.length; i++) {
       console.log("Tweet: " + tweets[i].text);
       console.log("Date and Time Posted: " + tweets[i].created_at);
-      console.log("====================================================");
+      console.log(divider);
+      fs.appendFile("log.txt", "\nTweet: " + tweets[i].text + "\nDate and Time Posted: " + tweets[i].created_at +
+        "\n" + divider + "\n", function(err) {
+          if(err) throw (err);
+      });
     }
   }
 });
@@ -44,7 +50,10 @@ else if (command === "spotify-this-song") {
       "Album: " + result.name,
     ].join("\n\n");
 
-    console.log(showData);
+    fs.appendFile("log.txt", "\n" + showData + "\n" + divider, function(err) {
+      if (err) throw err;
+      console.log(showData);
+    });
   });
 }
 // This runs if liri is given the command "movie-this"
@@ -69,7 +78,10 @@ else if (command === "movie-this") {
         "Actors: " + JSON.parse(body).Actors
       ].join("\n\n");
 
-      console.log(showData);
+      fs.appendFile("log.txt", "\n" + showData + "\n" + divider, function(err) {
+        if (err) throw err;
+        console.log(showData);
+      });
     }
   });
 }
@@ -86,12 +98,11 @@ else if(command === "do-what-it-says") {
     }
   
     console.log("Liri has been told to " + command + " " + term);
-    console.log("=====================================");
     liri();
   });
 }
 else {
-  console.log("=====================================");
+  console.log(divider);
   console.log("Sorry, Liri doesn't know that command. Try one of these:" + "\n" +
     "\n* my-tweets <screen name>" + "\n* spotify-this-song <song name>" + "\n* movie-this <movie name>" +
     "\n* do-what-it-says");
