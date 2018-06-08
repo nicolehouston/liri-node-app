@@ -91,9 +91,10 @@ else if(command === "do-what-it-says") {
   });
 }
 else {
-  console.log("Sorry, Liri doesn't know that command. Try one of these:" + 
-    "\n*my-tweets <screen name>" + "\n*spotify-this-song <song name>" + "\n*movie-this <movie name>" +
-    "\n*do-what-it-says");
+  console.log("=====================================");
+  console.log("Sorry, Liri doesn't know that command. Try one of these:" + "\n" +
+    "\n* my-tweets <screen name>" + "\n* spotify-this-song <song name>" + "\n* movie-this <movie name>" +
+    "\n* do-what-it-says");
 }
 };
 
