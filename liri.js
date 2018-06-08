@@ -14,7 +14,7 @@ var term = process.argv.slice(3).join(" ");
 function liri() {
 // This runs if liri is given the command "my-tweets"
 if (command === "my-tweets") {
-  var params = {screen_name: 'anonymousCoder1'};
+  var params = {screen_name: term};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
     for (var i = 0; i < tweets.length; i++) {
@@ -27,6 +27,9 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 }
 // This runs if liri is given the command "spotify-this-song"
 else if (command === "spotify-this-song") {
+  if(!term) {
+    term = "The Sign Ace of Base";
+  };
   spotify.search({type: 'track', query: term}, function(err, data){
     if (err) {
       return console.log('Error occurred: ' + err);
@@ -88,7 +91,9 @@ else if(command === "do-what-it-says") {
   });
 }
 else {
-  console.log("Sorry, Liri doesn't know that command yet.");
+  console.log("Sorry, Liri doesn't know that command. Try one of these:" + 
+    "\n*my-tweets <screen name>" + "\n*spotify-this-song <song name>" + "\n*movie-this <movie name>" +
+    "\n*do-what-it-says");
 }
 };
 
