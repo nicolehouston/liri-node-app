@@ -2,8 +2,8 @@
 
 ## Instructions
 
-**This is a CLI program.**<br/>
-**There are 4 commands that can be given to liri:**<br/>
+* **This is a CLI program.**<br/>
+* **There are 4 commands that can be given to liri:**<br/>
     - node liri.js spotify-this-song [song name] <br/>
         (liri will give back to you the name of the song, the artist(s), a link to the song, and the album name)
     - node liri.js my-tweets [screen name]<br/>
@@ -13,8 +13,8 @@
     - node liri.js do-what-it-says<br/>
         (liri will read the text from a file and perform what it says to do if it follows one of the given commands)
 
-**This node app makes use of the following npm packages:**<br/>
-    - [Twitter]
+* **This node app makes use of the following npm packages:**<br/>
+    * [Twitter]
     - [Node-Spotify-API]
     - [Request]
     - [DotEnv]
